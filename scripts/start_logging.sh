@@ -3,12 +3,21 @@
 # path to log file - global variable
 FILE="$1"
 
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$CURRENT_DIR/variables.sh"
+
+
 ansifilter_installed() {
 	type ansifilter >/dev/null 2>&1 || return 1
 }
 
 system_osx() {
 	[ $(uname) == "Darwin" ]
+}
+
+pipe_pane_unfiltered() {
+    tmux pipe-pane "exec cat - >> $FILE"
 }
 
 pipe_pane_ansifilter() {
@@ -28,7 +37,9 @@ pipe_pane_sed() {
 }
 
 start_pipe_pane() {
-	if ansifilter_installed; then
+    if [ "$logging_unfiltered" == "1" ]; then
+        pipe_pane_unfiltered
+	elif ansifilter_installed; then
 		pipe_pane_ansifilter
 	elif system_osx; then
 		# OSX uses sed '-E' flag and a slightly different regex

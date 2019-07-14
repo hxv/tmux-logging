@@ -32,6 +32,9 @@ logging_filename=${logging_filename:-$default_logging_filename}
 
 logging_full_filename="${logging_path}/${logging_filename}"
 
+logging_unfiltered=$(tmux show-option -gqv "@logging-unfiltered")
+logging_unfiltered=${logging_unfiltered:-0}
+
 # Screen capture options
 default_screen_capture_path="$HOME"
 screen_capture_path=$(tmux show-option -gqv "@screen-capture-path")
