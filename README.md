@@ -85,7 +85,7 @@ You should now have all `tmux-logging` key bindings defined.
 
 ### Installing `ansifilter` (recommended for OSX users)
 
-If you're on OSX, it is recommeneded to install `ansifilter`:
+If you're on OSX, it is recommended to install `ansifilter`:
 `$ brew install ansifilter`
 
 [ansifilter](http://www.andre-simon.de/doku/ansifilter/en/ansifilter.php)
@@ -107,6 +107,10 @@ A user will probably want to filter ANSI codes out of the log. Here's the same
 log as above when this plugin is used:
 
 ![proper log output](/screenshots/proper_log_output.png)
+
+### Configuration Docs
+
+- [Changing default options](docs/configuration.md).
 
 ### Other plugins
 
